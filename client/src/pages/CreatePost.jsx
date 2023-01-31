@@ -39,7 +39,7 @@ const CreatePost = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.prevent.default();
+    e.preventDefault();
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
@@ -48,7 +48,7 @@ const CreatePost = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(form),
+          body: JSON.stringify({ ...form }),
         });
         await response.json();
         navigate("/");
